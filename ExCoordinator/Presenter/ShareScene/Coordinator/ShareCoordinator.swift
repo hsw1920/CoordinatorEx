@@ -27,12 +27,17 @@ final class ShareCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = ShareVC()
-        vc.coordinator = self
-        self.navigationController.popToRootViewController(animated: false)
-        self.navigationController.pushViewController(vc, animated: true)
+        guard let rootVC = self.navigationController.viewControllers.first,
+              rootVC is HomeVC else {
+            return
+        }
+
+        let shareVC = ShareVC()
+        shareVC.coordinator = self
+
+        self.navigationController.pushViewController(shareVC, animated: true)
+        self.navigationController.viewControllers = [rootVC, shareVC]
     }
-    
 }
 
 extension ShareCoordinator: ShareVCDelegate {

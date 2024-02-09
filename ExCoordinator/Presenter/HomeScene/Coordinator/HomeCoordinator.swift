@@ -55,9 +55,7 @@ extension HomeCoordinator: MyInfoCoordinatorDelegate {
 extension HomeCoordinator: CreateCoordinatorDelegate {
     
     func didFinishCreate(_ child: Coordinator) {
-        print("Home Child !!!!!!: \(childCoordinators)")
         removeChildCoordinator(child: child)
-        print("Home Child !!!!!!?????????: \(childCoordinators)")
     }
     
     func showCreate() {
@@ -79,17 +77,9 @@ extension HomeCoordinator: ShareCoordinatorDeleagate {
     }
     
     func showShare() {
-        print("=====")
-        print("navigationController: \(navigationController.viewControllers)")
-        print("COORDI: \(childCoordinators)")
-        print("=====")
         let coordinator = ShareCoordinator(self.navigationController)
         coordinator.delegate = self
         self.addChildCoordinator(child: coordinator)
         coordinator.start()
-        print("=====")
-        print("navigationController: \(navigationController.viewControllers)")
-        print("COORDI: \(childCoordinators)")
-        print("=====")
     }
 }

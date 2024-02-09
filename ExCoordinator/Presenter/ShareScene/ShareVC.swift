@@ -31,7 +31,6 @@ class ShareVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
         
-        print("navigationController: \(navigationController?.viewControllers)")
         view.addSubview(label)
         
         NSLayoutConstraint.activate([
