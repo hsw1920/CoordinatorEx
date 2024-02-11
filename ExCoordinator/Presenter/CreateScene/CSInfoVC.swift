@@ -10,6 +10,7 @@ import UIKit
 protocol CSInfoVCDelegate: AnyObject {
     func didFinishCreate()
     func showNextView(viewType: CreateViewType)
+    func popBack()
 }
 
 class CSInfoVC: UIViewController {
@@ -46,6 +47,8 @@ class CSInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown
+        setupNavigationItem(with: .closeCreate, target: self, action: #selector(closeButtonDidTap))
+        setupNavigationItem(with: .back, target: self, action: #selector(backButtonDidTap))
         
         view.addSubview(stackView)
         stackView.addArrangedSubview(label)
@@ -56,15 +59,20 @@ class CSInfoVC: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        coordinator?.didFinishCreate()
+
+    @objc
+    private func nextButtonDidTap() {
+        coordinator?.showNextView(viewType: .CSInfo)
     }
     
     @objc
-    func nextButtonDidTap() {
-        coordinator?.showNextView(viewType: .CSInfo)
+    private func closeButtonDidTap() {
+        self.coordinator?.didFinishCreate()
+    }
+    
+    @objc
+    private func backButtonDidTap() {
+        self.coordinator?.popBack()
     }
 }
 

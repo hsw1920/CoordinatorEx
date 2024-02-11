@@ -37,18 +37,18 @@ final class CreateCoordinator: Coordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     
-    func didFinishCreate() {
+    func finish() {
         childCoordinators.removeAll()
         delegate?.didFinishCreate(self)
-    }
-    
-    func didFinishCreate(_ child: Coordinator) {
-        delegate?.didFinishCreate(self)
-        removeChildCoordinator(child: child)
     }
 }
 
 extension CreateCoordinator: SplitMethodVCDelegate {
+    func popBack() {
+        navigationController.popViewController(animated: true)
+        finish()
+    }
+    
     func showNextViewSmart() {
         let coordinator = SmartCoordinator(self.navigationController)
         coordinator.delegate = self
@@ -65,6 +65,11 @@ extension CreateCoordinator: SplitMethodVCDelegate {
 }
 
 extension CreateCoordinator: SmartCoordinatorDelegate, EqualCoordinatorDelegate {
+    func didFinishCreate(_ child: Coordinator) {
+        removeChildCoordinator(child: child)
+        finish()
+    }
+    
     func didFinishSmart(_ child: Coordinator) {
         removeChildCoordinator(child: child)
     }

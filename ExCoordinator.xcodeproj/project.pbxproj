@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6015A1B42B77234400E9D879 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6015A1B32B77234400E9D879 /* UIViewController+Utils.swift */; };
+		6015A1B82B7739A500E9D879 /* HistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6015A1B72B7739A500E9D879 /* HistoryCoordinator.swift */; };
+		6015A1BA2B7739B700E9D879 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6015A1B92B7739B700E9D879 /* HistoryVC.swift */; };
 		606691332B6E27F6008F8080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606691322B6E27F6008F8080 /* AppDelegate.swift */; };
 		606691352B6E27F6008F8080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606691342B6E27F6008F8080 /* SceneDelegate.swift */; };
 		606691372B6E27F6008F8080 /* SplitMethodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606691362B6E27F6008F8080 /* SplitMethodVC.swift */; };
@@ -17,7 +20,7 @@
 		6066914C2B6E2DAD008F8080 /* CreateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066914B2B6E2DAD008F8080 /* CreateCoordinator.swift */; };
 		6066914E2B6E3286008F8080 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066914D2B6E3286008F8080 /* HomeVC.swift */; };
 		606691502B6E3C49008F8080 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6066914F2B6E3C49008F8080 /* HomeCoordinator.swift */; };
-		608C03302B720A13002BE766 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C032F2B720A13002BE766 /* MyInfoViewController.swift */; };
+		608C03302B720A13002BE766 /* MyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C032F2B720A13002BE766 /* MyInfoVC.swift */; };
 		608C03332B720B13002BE766 /* MyInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C03322B720B13002BE766 /* MyInfoCoordinator.swift */; };
 		60A561212B74F7CA00E6EFC0 /* ShareCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A561202B74F7CA00E6EFC0 /* ShareCoordinator.swift */; };
 		60A86B1C2B7375DE00D3C58D /* CSInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60A86B1B2B7375DE00D3C58D /* CSInfoVC.swift */; };
@@ -29,6 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6015A1B32B77234400E9D879 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		6015A1B72B7739A500E9D879 /* HistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCoordinator.swift; sourceTree = "<group>"; };
+		6015A1B92B7739B700E9D879 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		6066912F2B6E27F6008F8080 /* ExCoordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExCoordinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		606691322B6E27F6008F8080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		606691342B6E27F6008F8080 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +47,7 @@
 		6066914B2B6E2DAD008F8080 /* CreateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCoordinator.swift; sourceTree = "<group>"; };
 		6066914D2B6E3286008F8080 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		6066914F2B6E3C49008F8080 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		608C032F2B720A13002BE766 /* MyInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		608C032F2B720A13002BE766 /* MyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoVC.swift; sourceTree = "<group>"; };
 		608C03322B720B13002BE766 /* MyInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoCoordinator.swift; sourceTree = "<group>"; };
 		60A561202B74F7CA00E6EFC0 /* ShareCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareCoordinator.swift; sourceTree = "<group>"; };
 		60A86B1B2B7375DE00D3C58D /* CSInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSInfoVC.swift; sourceTree = "<group>"; };
@@ -63,6 +69,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6015A1B22B77232500E9D879 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6015A1B32B77234400E9D879 /* UIViewController+Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		6015A1B52B77397C00E9D879 /* HistoryScene */ = {
+			isa = PBXGroup;
+			children = (
+				6015A1B62B77399800E9D879 /* Coordinator */,
+				6015A1B92B7739B700E9D879 /* HistoryVC.swift */,
+			);
+			path = HistoryScene;
+			sourceTree = "<group>";
+		};
+		6015A1B62B77399800E9D879 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6015A1B72B7739A500E9D879 /* HistoryCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		606691262B6E27F6008F8080 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +115,7 @@
 			children = (
 				606691322B6E27F6008F8080 /* AppDelegate.swift */,
 				606691342B6E27F6008F8080 /* SceneDelegate.swift */,
+				6015A1B22B77232500E9D879 /* Utils */,
 				608C032A2B720007002BE766 /* Presenter */,
 				6066913B2B6E27F7008F8080 /* Assets.xcassets */,
 				6066913D2B6E27F7008F8080 /* LaunchScreen.storyboard */,
@@ -107,6 +139,7 @@
 				608C032B2B72001D002BE766 /* HomeScene */,
 				608C032E2B720041002BE766 /* CreateScene */,
 				60A5611E2B74F7B600E6EFC0 /* ShareScene */,
+				6015A1B52B77397C00E9D879 /* HistoryScene */,
 				608C032D2B720035002BE766 /* MyInfoScene */,
 			);
 			path = Presenter;
@@ -125,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				608C03312B720B0A002BE766 /* Coordinator */,
-				608C032F2B720A13002BE766 /* MyInfoViewController.swift */,
+				608C032F2B720A13002BE766 /* MyInfoVC.swift */,
 			);
 			path = MyInfoScene;
 			sourceTree = "<group>";
@@ -289,8 +322,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				60A86B1C2B7375DE00D3C58D /* CSInfoVC.swift in Sources */,
+				6015A1BA2B7739B700E9D879 /* HistoryVC.swift in Sources */,
 				6066914E2B6E3286008F8080 /* HomeVC.swift in Sources */,
+				6015A1B42B77234400E9D879 /* UIViewController+Utils.swift in Sources */,
 				60A86B242B74907B00D3C58D /* CSMemberVC.swift in Sources */,
+				6015A1B82B7739A500E9D879 /* HistoryCoordinator.swift in Sources */,
 				606691502B6E3C49008F8080 /* HomeCoordinator.swift in Sources */,
 				60A86B282B74955500D3C58D /* ShareVC.swift in Sources */,
 				606691472B6E28BC008F8080 /* Coordinator.swift in Sources */,
@@ -301,7 +337,7 @@
 				606691332B6E27F6008F8080 /* AppDelegate.swift in Sources */,
 				60A86B222B73767500D3C58D /* SmartCoordinator.swift in Sources */,
 				60A86B202B73766700D3C58D /* EqualCoordinator.swift in Sources */,
-				608C03302B720A13002BE766 /* MyInfoViewController.swift in Sources */,
+				608C03302B720A13002BE766 /* MyInfoVC.swift in Sources */,
 				606691352B6E27F6008F8080 /* SceneDelegate.swift in Sources */,
 				60A561212B74F7CA00E6EFC0 /* ShareCoordinator.swift in Sources */,
 				60A86B262B74951700D3C58D /* CSItemVC.swift in Sources */,

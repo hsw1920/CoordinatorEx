@@ -8,6 +8,7 @@
 import UIKit
 
 protocol EqualCoordinatorDelegate {
+    func didFinishCreate(_ child: Coordinator)
     func didFinishEqual(_ child: Coordinator)
     func showShareVC(child: Coordinator)
 }
@@ -40,9 +41,23 @@ final class EqualCoordinator: Coordinator {
 }
 
 extension EqualCoordinator: CSInfoVCDelegate, CSMemberVCDelegate {
+    func popBack() {
+        navigationController.popViewController(animated: true)
+        
+        let isFinishEqualFlow = navigationController.viewControllers
+                .compactMap { $0 as? HomeVC ?? $0 as? SplitMethodVC }
+                .count == navigationController.viewControllers.count
+        
+        if isFinishEqualFlow {
+            finish()
+        }
+    }
+    
     func didFinishCreate() {
         // Exit 버튼 눌렀을 때
         finish()
+        delegate?.didFinishCreate(self)
+        navigationController.popToRootViewController(animated: true)
     }
     
     func showNextView(viewType: CreateViewType) {

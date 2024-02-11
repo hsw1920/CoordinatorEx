@@ -15,7 +15,7 @@ protocol HomeVCDelegate {
 
 class HomeVC: UIViewController {
 
-    var coordinator: HomeCoordinator?
+    weak var coordinator: HomeCoordinator?
     
     lazy var createButton = UIBarButtonItem(
         title: "create",
@@ -57,11 +57,7 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("navigationController: \(navigationController?.viewControllers)")
-        print("child: \(coordinator?.childCoordinators)")
-        
-        print("After All viewControllers: \(self.navigationController?.viewControllers)")
-        print("ViewCounts: \(navigationController?.viewControllers.count)")
+
     }
 
     @objc

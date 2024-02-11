@@ -9,10 +9,9 @@ import UIKit
 
 protocol ShareVCDelegate {
     func didFinishShare()
-    func closeShare()
 }
 
-class ShareVC: UIViewController {
+final class ShareVC: UIViewController {
 
     weak var coordinator: ShareCoordinator?
     
@@ -27,6 +26,16 @@ class ShareVC: UIViewController {
         print("- \(type(of: self)) deinit")
     }
     
+    init(buttonType: ButtonType) {
+        super.init(nibName: nil, bundle: nil)
+        
+        setupNavigationItem(with: buttonType, target: self, action: #selector(dismissShare))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
@@ -39,14 +48,9 @@ class ShareVC: UIViewController {
         ])
     }
 
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        coordinator?.didFinishShare()
-    }
-
     @objc
-    func closeShare() {
-        coordinator?.closeShare()
+    private func dismissShare() {
+        coordinator?.didFinishShare()
     }
 }
 

@@ -7,8 +7,9 @@
 
 import UIKit
 
-protocol MyInfoViewControllerDelegate {
+protocol MyInfoVCDelegate {
     func didFinishMyInfo()
+    func showHistory()
 }
 
 class MyInfoVC: UIViewController {
@@ -52,6 +53,7 @@ class MyInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown
+        setupNavigationItem(with: .back, target: self, action: #selector(backButtonDidTap))
 
         view.addSubview(stackView)
         stackView.addArrangedSubview(label)
@@ -64,18 +66,18 @@ class MyInfoVC: UIViewController {
         ])
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        coordinator?.didFinishCreate()
-    }
-    
     @objc
     func myInfoFlowDidTap() {
-        //self.coordinator?.showNextViewSmart()
+        // myInfoButton 탭 액션
     }
     
     @objc
     func historyFlowDidTap() {
-        //self.coordinator?.showNextViewEqual()
+        self.coordinator?.showHistory()
+    }
+    
+    @objc
+    private func backButtonDidTap() {
+        self.coordinator?.didFinishMyInfo()
     }
 }

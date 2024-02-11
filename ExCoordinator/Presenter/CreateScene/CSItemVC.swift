@@ -7,9 +7,10 @@
 
 import UIKit
 
-protocol CSItemVCDelegate: AnyObject {
+protocol CSItemVCDelegate {
     func didFinishCreate()
     func showNextView(viewType: CreateViewType)
+    func popBack()
 }
 
 class CSItemVC: UIViewController {
@@ -46,6 +47,8 @@ class CSItemVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemCyan
+        setupNavigationItem(with: .closeCreate, target: self, action: #selector(closeButtonDidTap))
+        setupNavigationItem(with: .back, target: self, action: #selector(backButtonDidTap))
         
         view.addSubview(stackView)
         stackView.addArrangedSubview(label)
@@ -57,14 +60,19 @@ class CSItemVC: UIViewController {
         ])
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        coordinator?.didFinishCreate()
+    @objc
+    private func nextButtonDidTap() {
+        coordinator?.showNextView(viewType: .CSItem)
     }
     
     @objc
-    func nextButtonDidTap() {
-        coordinator?.showNextView(viewType: .CSItem)
+    private func closeButtonDidTap() {
+        self.coordinator?.didFinishCreate()
+    }
+    
+    @objc
+    private func backButtonDidTap() {
+        self.coordinator?.popBack()
     }
 }
 

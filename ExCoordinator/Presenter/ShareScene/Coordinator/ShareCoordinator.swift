@@ -9,7 +9,11 @@ import UIKit
 
 protocol ShareCoordinatorDeleagate {
     func didFinishShare(_ child: Coordinator)
-    func closeShare()
+}
+
+enum FlowType {
+    case create
+    case history
 }
 
 final class ShareCoordinator: Coordinator {
@@ -17,9 +21,15 @@ final class ShareCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var delegate: ShareCoordinatorDeleagate?
+    var sourceFlow: FlowType!
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    init(navigationController: UINavigationController, sourceFlow: FlowType) {
+        self.navigationController = navigationController
+        self.sourceFlow = sourceFlow
     }
     
     deinit {
@@ -31,22 +41,43 @@ final class ShareCoordinator: Coordinator {
               rootVC is HomeVC else {
             return
         }
-
-        let shareVC = ShareVC()
-        shareVC.coordinator = self
-
-        self.navigationController.pushViewController(shareVC, animated: true)
-        self.navigationController.viewControllers = [rootVC, shareVC]
+        
+        switch sourceFlow {
+        case .create:
+            let shareVC = ShareVC(buttonType: .closeShare)
+            shareVC.coordinator = self
+            self.navigationController.pushViewController(shareVC, animated: true)
+            self.navigationController.viewControllers = [rootVC, shareVC]
+        case .history:
+            let shareVC = ShareVC(buttonType: .back)
+            shareVC.coordinator = self
+            self.navigationController.pushViewController(shareVC, animated: true)
+        case .none:
+            return
+        }
+    }
+    
+    func finish() {
+        childCoordinators.removeAll()
+        delegate?.didFinishShare(self)
     }
 }
 
 extension ShareCoordinator: ShareVCDelegate {
     func didFinishShare() {
-        delegate?.didFinishShare(self)
+        dismissShare()
+        finish()
     }
     
-    func closeShare() {
-        delegate?.closeShare()
+    func dismissShare() {
+        switch sourceFlow {
+        case .create:
+            self.navigationController.popToRootViewController(animated: true)
+        case .history:
+            self.navigationController.popViewController(animated: true)
+        case .none:
+            return
+        }
     }
 }
 

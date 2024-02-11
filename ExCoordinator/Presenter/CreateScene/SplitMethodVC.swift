@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol SplitMethodVCDelegate: AnyObject {
-    func didFinishCreate()
+protocol SplitMethodVCDelegate {
     func showNextViewSmart()
     func showNextViewEqual()
+    func popBack()
 }
 
 class SplitMethodVC: UIViewController {
@@ -55,6 +55,7 @@ class SplitMethodVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBrown
+        setupNavigationItem(with: .back, target: self, action: #selector(backButtonDidTap))
 
         view.addSubview(stackView)
         stackView.addArrangedSubview(label)
@@ -67,19 +68,19 @@ class SplitMethodVC: UIViewController {
         ])
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-//        coordinator?.didFinishCreate()
-    }
-    
     @objc
-    func smartFlowDidTap() {
+    private func smartFlowDidTap() {
         self.coordinator?.showNextViewSmart()
     }
     
     @objc
-    func equalFlowDidTap() {
+    private func equalFlowDidTap() {
         self.coordinator?.showNextViewEqual()
+    }
+    
+    @objc
+    private func backButtonDidTap() {
+        self.coordinator?.popBack()
     }
 }
 

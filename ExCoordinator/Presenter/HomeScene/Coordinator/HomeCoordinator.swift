@@ -33,7 +33,6 @@ final class HomeCoordinator: Coordinator, HomeVCDelegate {
     }
     
     func didFinishHome() {
-        print(">>>>>>>>>>><<<<<<<<<<<<<")
         delegate?.didFinishHome(self)
     }
     
@@ -67,17 +66,14 @@ extension HomeCoordinator: CreateCoordinatorDelegate {
 }
 
 extension HomeCoordinator: ShareCoordinatorDeleagate {
-    func closeShare() {
-        print("navigationController: \(navigationController.viewControllers)")
-        print("childCoordinator: \(childCoordinators)")
-    }
-    
+
     func didFinishShare(_ child: Coordinator) {
         removeChildCoordinator(child: child)
     }
     
     func showShare() {
-        let coordinator = ShareCoordinator(self.navigationController)
+        let coordinator = ShareCoordinator(navigationController: self.navigationController, 
+                                           sourceFlow: .create)
         coordinator.delegate = self
         self.addChildCoordinator(child: coordinator)
         coordinator.start()
